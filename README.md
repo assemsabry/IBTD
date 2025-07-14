@@ -109,7 +109,57 @@ A radiologist uploads an MRI image of a patient suspected of having a brain tumo
 * **Data Augmentation:** Rotation, flipping, affine transforms, color jitter
 * **Regularization:** MixUp
 
-## Developer
+## Developer & Project Owner
 
-**Assem Sabry**
-AI Engineer and Creator of IBTD
+<p align="center">
+  <img src="Media/assem.jpg" width="500" alt="Assem Sabry">
+</p>
+
+**Assem Sabry** is a 17-year-old Egyptian AI Engineer.  
+He has authored several research projects in the fields of **medical AI** and **artificial intelligence** in general.  
+This project was entirely designed, developed, and trained by **Assem Sabry** himself, with no external contributions.
+
+All rights to this project are reserved and owned solely by **Assem Sabry**.  
+The entire development process — including data handling, modeling, and evaluation — was conducted individually.
+
+---
+
+-  Website: [https://assemsabry.netlify.app/](https://assemsabry.netlify.app/)  
+-  Email: assemsabryyy@gmail.com
+
+
+## How to Use
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/assemsabry/IBTD
+cd IBTD
+```
+
+```bash
+python -m venv venv
+source venv/bin/activate     # On Linux/Mac
+venv\Scripts\activate        # On Windows
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+python main.py
+```
+
+## Dependencies
+
+- **Python** 3.13  
+- **PyTorch**  
+- **TorchVision**  
+- **NumPy**  
+- **Matplotlib**  
+- **scikit-learn**  
+- **TensorBoard**  
+- **OpenCV**  
+- **Pillow**
+
+
