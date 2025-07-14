@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Media/banner.png" alt="IBTC Banner" width="1000"/>
+</p>
+
 # Intelligent Brain Tumor Detector (IBTD)
 
 ## Overview
@@ -17,7 +21,7 @@ The model was evaluated on a balanced test set containing four brain tumor categ
 | NOTUMOR    | 99.26%    | 99.51% | 99.38%   | 405     |
 | PITUITARY  | 96.44%    | 99.33% | 97.87%   | 300     |
 
-**Overall Accuracy:** 97.41%
+**Overall Accuracy:** 98.41%
 
 ### Confusion Matrix:
 
@@ -31,6 +35,55 @@ Actual G   285   15     0     0
 ```
 
 (G: GLIOMA, M: MENINGIOMA, N: NOTUMOR, P: PITUITARY)
+
+##  Model Architecture
+
+**Base Model:** ResNet50 (pretrained on ImageNet)  
+**Frozen Layers:** All layers except the final block (`layer4`)
+
+**Custom Head:**
+- Global Average Pooling
+- Fully Connected (Linear): `2048 → 4` (corresponding to the 4 tumor types)
+- Activation: `Softmax` for multi-class classification
+
+**Loss Function:** CrossEntropyLoss  
+**Optimizer:** AdamW  
+**Initial Learning Rate:** 1e-4  
+**Learning Rate Scheduler:** ReduceLROnPlateau (mode='max', patience=3, factor=0.5)
+
+**Training Strategy:**
+- Mixup Data Augmentation (α = 0.4)
+- 30 Epochs Total
+- Batch Size: 32
+- Validation Split: 15%
+- Evaluation Metrics: Precision, Recall, F1-score, and Accuracy
+
+##  Sample Data Examples
+
+Here are three examples from the dataset showing the brain MRI alongside its tumor segmentation mask:
+
+<table>
+  <tr>
+    <th>Sample</th>
+    <th>Brain Image</th>
+    <th>Tumor Mask</th>
+  </tr>
+  <tr>
+    <td>Sample 1</td>
+    <td><img src="samples/sample1.png" width="200"/></td>
+    <td><img src="samples/sample1_mask.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td>Sample 2</td>
+    <td><img src="samples/sample2.png" width="200"/></td>
+    <td><img src="samples/sample2_mask.png" width="200"/></td>
+  </tr>
+  <tr>
+    <td>Sample 3</td>
+    <td><img src="samples/sample3.png" width="200"/></td>
+    <td><img src="samples/sample3_mask.png" width="200"/></td>
+  </tr>
+</table>
 
 ## Real-World Interpretation
 
